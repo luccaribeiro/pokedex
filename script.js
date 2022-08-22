@@ -7,8 +7,15 @@ function procuraPoke(){
         return response.json();
     })
     .then((data) => {
-        document.getElementById("demo").innerHTML = `Nome: ${data['name']}`
-        let img = data['sprites']['front_default']
-        document.getElementById("pic").setAttribute('src', img)
-    })
+        document.getElementById("result-name").innerHTML = `Nome: ${data['name']}`
+        let imgFront = data['sprites']['front_default']
+        let imgBack = data['sprites']['back_default']
+        document.getElementById("pic-front").setAttribute('src', imgFront)
+        document.getElementById("pic-back").setAttribute('src', imgBack)
+        console.log(data)
+    },
+    (error) => {
+        console.log("POKEMON NÃO ENCONTRADO")
+    }
+)
 }
